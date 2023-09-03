@@ -8,13 +8,12 @@ menu_principal = """
 Digite a sua opção: """
 
 saldo = 0
-limite_saque = 500
+valor_limite_saque = 500
 extrato = ""
 numero_saques = 0
 LIMITE_SAQUES = 3
 
 while True:
-
     opcao = input(menu_principal)
 
     if opcao == "d":
@@ -23,6 +22,7 @@ while True:
         if valor > 0:
             saldo += valor
             extrato += f"Depósito: R$ {valor:.2f}\n"
+            print("Depósito realizado com sucesso!")
 
         else:
             print("Operação inválida! O valor informado é inválido.")
@@ -32,7 +32,7 @@ while True:
 
         excedeu_saldo = valor > saldo
 
-        excedeu_limite = valor > limite
+        excedeu_limite = valor > valor_limite_saque
 
         excedeu_saques = numero_saques >= LIMITE_SAQUES
 
@@ -49,6 +49,7 @@ while True:
             saldo -= valor
             extrato += f"Saque: R$ {valor:.2f}\n"
             numero_saques += 1
+            print("Saque realizado com sucesso!")
 
         else:
             print("Operação falhou! O valor informado é inválido.")
